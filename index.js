@@ -13,12 +13,12 @@ require("dotenv").config();
 app.use(express.static(path.join(__dirname, "../Frontend")));
 
 app.listen(3000, () => {
-  console.log("Server started on port 3000");
+    console.log("Server started on port 3000");
 });
 
 app.post("/create", async (req, res) => {
-  const { prompt } = req.body;
-  const pixabayApiKey = process.env.PIXABAY_API_KEY; 
+    const { prompt } = req.body;
+    const pixabayApiKey = process.env.PIXABAY_API_KEY;
 
   try {
     const pixabayResponse = await axios.get("https://pixabay.com/api/", {
