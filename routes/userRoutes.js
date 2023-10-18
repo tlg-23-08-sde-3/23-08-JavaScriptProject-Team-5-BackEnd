@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: "userRoutes post-register error",
+            message: "userRoutes post-register error.",
         });
     }
 });
@@ -62,16 +62,12 @@ router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ username });
         if (!user) {
-            return res
-                .status(400)
-                .json({ message: "Invalid username or password." });
+            return res.status(400).json({ message: "Invalid username." });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res
-                .status(400)
-                .json({ message: "Invalid username or password." });
+            return res.status(400).json({ message: "Invalid password." });
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -81,7 +77,7 @@ router.post("/login", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: "userRoutes post-login error",
+            message: "userRoutes post-login error.",
         });
     }
 });
