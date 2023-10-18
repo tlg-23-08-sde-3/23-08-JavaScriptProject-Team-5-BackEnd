@@ -10,7 +10,7 @@ module.exports = {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
             });
-            console.log("connected to db");
+            console.log("Connected to db");
         } catch (error) {
             console.log(error);
         }
