@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: "Server error. Please try again later.",
+            message: "userRoutes post-register error",
         });
     }
 });
@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: "Server error. Please try again later.",
+            message: "userRoutes post-login error",
         });
     }
 });
@@ -93,7 +93,7 @@ router.get("/profile", authenticateToken, async (req, res) => {
         res.json(user);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send("userRoutes get-profile error");
     }
 });
 
@@ -112,7 +112,7 @@ router.put("/updateScore", authenticateToken, async (req, res) => {
         }
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send("userRoutes put-updateScore error");
     }
 });
 
