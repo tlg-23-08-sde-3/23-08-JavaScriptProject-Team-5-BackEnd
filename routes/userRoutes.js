@@ -112,4 +112,23 @@ router.put("/updateScore", authenticateToken, async (req, res) => {
     }
 });
 
+// Check User Session Endpoint
+router.get("/checkSession", authenticateToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select("username");
+        if (user) {
+            res.json({
+                userToken: req.header("x-auth-token"),
+                userId: req.user.id,
+                username: user.username,
+            });
+        } else {
+            res.status(404).json({ message: "User not found." });
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("userRoutes get-checkSession error");
+    }
+});
+
 module.exports = router;
