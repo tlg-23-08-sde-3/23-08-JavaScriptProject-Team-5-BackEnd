@@ -49,8 +49,19 @@ router.get("/load/:userId", async (req, res) => {
         }
         res.json(gameState);
     } catch (error) {
-        console.error(error); // Log the actual error
+        console.error(error);
         res.status(500).json({ error: "Failed to retrieve game state" });
+    }
+});
+
+router.delete("/delete/:userId", async (req, res) => {
+    try {
+        const { userId } = req.params;
+        await Game.findOneAndDelete({ userId });
+        res.json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Failed to delete game state" });
     }
 });
 
