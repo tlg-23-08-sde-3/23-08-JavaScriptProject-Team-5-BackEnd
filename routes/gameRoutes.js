@@ -45,7 +45,7 @@ router.get("/load/:userId", async (req, res) => {
         const { userId } = req.params;
         const gameState = await Game.findOne({ userId });
         if (!gameState) {
-            return res.status(404).json({ error: "Game state not found" });
+            return res.status(404);
         }
         res.json(gameState);
     } catch (error) {
