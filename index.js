@@ -14,6 +14,7 @@ const db = require("./utils/db");
 const userRoutes = require("./routes/userRoutes");
 const pixabayRoutes = require("./routes/pixabayRoutes");
 const scoreRoutes = require("./routes/scoreRoutes");
+const gameRoutes = require("./routes/gameRoutes");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, "../Frontend")));
 app.use("/api/users", userRoutes);
 app.use("/api/pixabay", pixabayRoutes);
 app.use("/api/scores", scoreRoutes);
+app.use("/api/game", gameRoutes);
 
 // Set up HTTP server and Socket.io
 const server = http.createServer(app);
