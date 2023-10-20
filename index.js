@@ -32,6 +32,6 @@ db.connect();
 
 // Start the server and listen on the defined port
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
